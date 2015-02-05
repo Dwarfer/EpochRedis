@@ -20,14 +20,14 @@ $TDA = Build_Trader_Items_Array($AI_ID);
 if($TDA){
 	print "Built Array data\n";
 	print "\tNow lets do something with it\n";
-	print "\tLets Add 3 med packs, 3 scam_epoch and 3 ItemSodaBurst and  to each trader\n";
+	print "\tLets Delete 3 med packs, 3 scam_epoch and 3 ItemSodaBurst and  to each trader\n";
 	print "\tSo Far " . count(Find_Item_In_Traders($TDA,"FAK")) . " Traders Have Meds in stock\n";
 	print "\tSo Far " . count(Find_Item_In_Traders($TDA,"scam_epoch")) . " Traders Have scam_epoch in stock\n";
 	print "\tSo Far " . count(Find_Item_In_Traders($TDA,"ItemSodaBurst")) . " Traders Have ItemSodaBurst in stock\n";
 	foreach($TDA as $TID=>$DATA){
-		$DATA = Update_Item_In_Traders($TID,$DATA,"FAK",3);
-		$DATA = Update_Item_In_Traders($TID,$DATA,"scam_epoch",3);
-		$DATA = Update_Item_In_Traders($TID,$DATA,"ItemSodaBurst",3);
+		$DATA = Delete_Item_In_Traders($TID,$DATA,"FAK",3);
+		$DATA = Delete_Item_In_Traders($TID,$DATA,"scam_epoch",3);
+		$DATA = Delete_Item_In_Traders($TID,$DATA,"ItemSodaBurst",3);
 		//Rember to Update the stored array for more proccessing if need be
 		$TDA[$TID] = $DATA;
 		

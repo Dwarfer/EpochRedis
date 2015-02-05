@@ -38,6 +38,16 @@ function Update_Item_In_Traders($tid,$data,$item,$count){
 	return $data;
 };
 
+//This Function Removes the value from the Array
+function Delete_Item_In_Traders($tid,$data,$item,$count){
+	if($data){
+		if(isset($data[$item])){
+			unset($data[$item]);
+		}
+	}
+	return $data;
+};
+
 //This Function Find the and returns all the needle found in the haystack
 function Find_Item_In_Traders($haystack,$needle){
 	$rtd = array();
@@ -56,14 +66,17 @@ function Find_Item_In_Traders($haystack,$needle){
 
 //This Function takes the Array and changes it back into the Epoch Storage
 function Build_Trader_Items_Format($TDA){
-//	var_dump($TDA);
-	$t = 0;
-	foreach($TDA as $A => $B){
-			$I[$t] = "\"$A\"";
-			$C[$t] = "$B";
-			$t++;
+	if(empty($TDA)){
+		return "[[],[]]";
+	}else{
+		$t = 0;
+		foreach($TDA as $A => $B){
+				$I[$t] = "\"$A\"";
+				$C[$t] = "$B";
+				$t++;
+		}
+		return "[[" . implode(',', $I) . "],[" . implode(',', $C) . "]]";
 	}
-	return "[[" . implode(',', $I) . "],[" . implode(',', $C) . "]]";
 };
 
 //This Function builds all the Trader items into a PHP Array.
