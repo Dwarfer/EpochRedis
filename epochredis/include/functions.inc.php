@@ -10,7 +10,7 @@ function ListRedisIDs($keys){
 	global $RDClient;
 	$IDReturn = array();
 	$ITEM_DATA = $RDClient-> keys($keys);
-	var_dump($ITEM_DATA);
+//	var_dump($ITEM_DATA);
 	
 	foreach($ITEM_DATA as $x=>$DATA){
 		list($TB, $IN, $ID) = explode(":", $DATA);
