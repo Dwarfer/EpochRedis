@@ -5,9 +5,8 @@
 	By Dwarfer
 */
 
-require 'connect.inc.php';
-require 'functions.inc.php';
-
+require 'include/connect.inc.php';
+require 'include/functions.inc.php';
 
     $AI_ID = ListRedisIDs('AI:*');
 	$AI_ITEM_ID = ListRedisIDs('AI_ITEMS:*');
