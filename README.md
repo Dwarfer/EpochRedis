@@ -5,6 +5,14 @@ This set of tools has been writen for our own use with the EpochMod server we ho
 ## Main features ##
 
 - Cleanup AI Items when no trader exists anymore.
+- [WIP] Display Trader loaction and what they have in stock.
+
+## ToDo List ##
+
+- Remove key items from traders
+- Add basic items to traders
+- re stock basic items
+- look for an economy trend and stock acrodigly.
 
 ## Contributing ##
 
