@@ -40,11 +40,14 @@ function Update_Item_In_Traders($tid,$data,$item,$count){
 
 //This Function Removes the value from the Array
 function Delete_Item_In_Traders($tid,$data,$item,$count){
+	var_dump($data);
 	if($data){
 		if(isset($data[$item])){
+			echo "FISH BUM";
 			unset($data[$item]);
 		}
 	}
+	var_dump($data);
 	return $data;
 };
 
@@ -104,5 +107,59 @@ function Build_Trader_Items_Array($AI_ID){
 	}
 	return $TDA;
 }
+
+//This Function builds all the Trader items into a PHP Array.
+function Build_Vehicle_Items_Array($VEH_ID){
+	global $RDClient;
+	global $InstanceID;
+	$VDA = array();
+	foreach($VEH_ID as $X=>$Y ){
+		list($TB, $IN, $ID) = explode(":", $Y);
+		//Lets Check the InstanceID now
+		if($InstanceID!=$IN) continue;
+		$Vehicle_Items = $RDClient-> get("Vehicle:$IN:$ID");
+		$SD = json_decode($Vehicle_Items);
+//		var_dump($SD);
+		if($SD){
+			if($SD[0]){
+				$VDA[$ID] = $SD;
+			}else{
+				$VDA[$ID] = NULL;
+			}
+		}else{
+			$VDA[$ID] = NULL;
+		}
+	}
+	return $VDA;
+}
+
+function Find_Item_In_Vehicle($haystack,$needle){
+	$rtd = array();
+	foreach($haystack as $A=>$B){
+		if($B){
+			foreach($B as $C=>$D){
+				if($needle==$B[0]){
+					//echo "### $A $B[0] $C $D\n";
+					$rtd[$A] = $B;
+				}
+			}
+		}
+	}
+	return $rtd;
+}
+
+function Delete_Vehicle($data){
+	global $RDClient;
+	global $InstanceID;
+	$VDA = array();
+	foreach($data as $X=>$Y ){
+		list($TB, $IN, $ID) = explode(":", $Y);
+		//Lets Check the InstanceID now
+		if($InstanceID!=$IN) continue;
+//		$Vehicle_Items = $RDClient-> get("Vehicle:$IN:$ID");
+		
+	}
+};
+
 
 ?>
