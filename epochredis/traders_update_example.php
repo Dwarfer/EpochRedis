@@ -35,8 +35,8 @@ if($TDA){
 		$DATA = Update_Item_In_Traders($TID,$DATA,"ItemSodaBurst",3);
 
 		//Clears Items from Tradders
-		if($TraderDelete){
-			foreach($TraderDelete as $E => $F){
+		if($TraderDelItems){
+			foreach($TraderDelItems as $E => $F){
 				$DATA = Delete_Item_In_Traders($DATA,$F);
 			};
 		}		
@@ -45,7 +45,7 @@ if($TDA){
 		$TDA[$TID] = $DATA;
 		
 		//Lets now Build The Update command and run it
-//		$RDClient-> set("AI_ITEMS:$InstanceID:$TID",Build_Trader_Items_Format($DATA));
+		$RDClient-> set("AI_ITEMS:$InstanceID:$TID",Build_Trader_Items_Format($DATA));
 	};
 	
 	print "\tNow " . count(Find_Item_In_Traders($TDA,"FAK")) . " Traders have 3 or more Meds in stock\n";
