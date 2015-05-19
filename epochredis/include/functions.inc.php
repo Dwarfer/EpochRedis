@@ -39,7 +39,7 @@ function Update_Item_In_Traders($tid,$data,$item,$count){
 };
 
 //This Function Removes the value from the Array
-function Delete_Item_In_Traders($tid,$data,$item,$count){
+function Delete_Item_In_Traders($data,$item){
 	if($data){
 		if(isset($data[$item])){
 			unset($data[$item]);
