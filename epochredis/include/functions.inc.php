@@ -40,14 +40,11 @@ function Update_Item_In_Traders($tid,$data,$item,$count){
 
 //This Function Removes the value from the Array
 function Delete_Item_In_Traders($tid,$data,$item,$count){
-	var_dump($data);
 	if($data){
 		if(isset($data[$item])){
-			echo "FISH BUM";
 			unset($data[$item]);
 		}
 	}
-	var_dump($data);
 	return $data;
 };
 
